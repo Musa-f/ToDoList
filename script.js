@@ -2,20 +2,25 @@ let addTask = document.querySelector('button');
 
 function add(){
     let section = document.querySelector('section');
+
     let inputTask = document.getElementById('inputTask').value;
-    let boxTask = document.createElement('div');
-    boxTask.setAttribute('class', 'box-style');
+    if(inputTask !== ""){
+        let boxTask = document.createElement('div');
+        boxTask.setAttribute('class', 'box-style');
 
-    let checkbox = document.createElement('input');
-    checkbox.type = "checkbox";
+        let checkbox = document.createElement('input');
+        checkbox.type = "checkbox";
 
-    let rmTask = document.createElement('div');
-    rmTask.setAttribute('class', 'rm-task-style');
-    rmTask.innerText = "✖";
-    rmTask.setAttribute('onclick', 'removeTask(this)');
+        let rmTask = document.createElement('div');
+        rmTask.setAttribute('class', 'rm-task-style');
+        rmTask.innerText = "✖";
+        rmTask.setAttribute('onclick', 'removeTask(this)');
 
-    boxTask.append(checkbox, inputTask, rmTask);
-    section.append(boxTask);
+        boxTask.append(checkbox, inputTask, rmTask);
+        section.append(boxTask);
+        
+        document.getElementById('inputTask').value = "";
+    }
 }
 
 addTask.addEventListener('click', add)
